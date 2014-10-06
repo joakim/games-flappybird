@@ -1,0 +1,362 @@
+/*
+  Copyright 2014 Nebez Briefkani and Kollegorna
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+*/
+
+@-webkit-keyframes animLand {
+  0% { background-position: 0px 0px; }
+  100% { background-position: -336px 0px; }
+}
+@-moz-keyframes animLand {
+  0% { background-position: 0px 0px; }
+  100% { background-position: -336px 0px; }
+}
+@-ms-keyframes animLand {
+  0% { background-position: 0px 0px; }
+  100% { background-position: -336px 0px; }
+}
+@-o-keyframes animLand {
+  0% { background-position: 0px 0px; }
+  100% { background-position: -336px 0px; }
+}
+@keyframes animLand {
+  0% { background-position: 0px 0px; }
+  100% { background-position: -336px 0px; }
+}
+
+@-webkit-keyframes animSky {
+  0% { background-position: 0px 100%; }
+  100% { background-position: -794px 100%; }
+}
+@-moz-keyframes animSky {
+  0% { background-position: 0px 100%; }
+  100% { background-position: -794px 100%; }
+}
+@-ms-keyframes animSky {
+  0% { background-position: 0px 100%; }
+  100% { background-position: -794px 100%; }
+}
+@-o-keyframes animSky {
+  0% { background-position: 0px 100%; }
+  100% { background-position: -794px 100%; }
+}
+@keyframes animSky {
+  0% { background-position: 0px 100%; }
+  100% { background-position: -794px 100%; }
+}
+
+@-webkit-keyframes animPipe {
+  0% { left: 1000px; }
+  100% { left: -100px; }
+}
+@-moz-keyframes animPipe {
+  0% { left: 1000px; }
+  100% { left: -100px; }
+}
+@-ms-keyframes animPipe {
+  0% { left: 1000px; }
+  100% { left: -100px; }
+}
+@-o-keyframes animPipe {
+  0% { left: 1000px; }
+  100% { left: -100px; }
+}
+@keyframes animPipe {
+  0% { left: 1000px; }
+  100% { left: -100px; }
+}
+
+/*
+ @-webkit-keyframes animBird {
+  from { background-position: 0px 0px; }
+  to { background-position: 0px -96px; }
+}
+@-moz-keyframes animBird {
+  from { background-position: 0px 0px; }
+  to { background-position: 0px -96px; }
+}
+@-ms-keyframes animBird {
+  from { background-position: 0px 0px; }
+  to { background-position: 0px -96px; }
+}
+@-o-keyframes animBird {
+  from { background-position: 0px 0px; }
+  to { background-position: 0px -96px; }
+}
+@keyframes animBird {
+  from { background-position: 0px 0px; }
+  to { background-position: 0px -96px; }
+}
+*/
+
+
+*,
+*:before,
+*:after {
+  /* border box */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  /* gpu acceleration */
+  -webkit-transition: translate3d(0, 0, 0);
+  -moz-transition: translate3d(0, 0, 0);
+  -ms-transition: translate3d(0, 0, 0);
+  -o-transition: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  /* select disable */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 12px;
+  color: #fff;
+  background-color: #000000;
+}
+
+#game {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#sky {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 420px;
+  background-image: url('../assets/sky.png');
+  background-position: 0px 100%;
+
+  -webkit-animation: animSky 7s linear infinite;
+  -moz-animation: animSky 7s linear infinite;
+  -ms-animation: animSky 7s linear infinite;
+  -o-animation: animSky 7s linear infinite;
+  animation: animSky 7s linear infinite;
+}
+
+#flyarea {
+  position: absolute;
+  height: 420px;
+  width: 100%;
+}
+
+#land {
+  position: absolute;
+  z-index: 50;
+  top: 405px;
+  width: 100%;
+  height: 88px;
+  background-image: url('../assets/land.png');
+  background-repeat: repeat-x;
+  background-position: 0px 0px;
+
+  -webkit-animation: animLand 2516ms linear infinite;
+  -moz-animation: animLand 2516ms linear infinite;
+  -ms-animation: animLand 2516ms linear infinite;
+  -o-animation: animLand 2516ms linear infinite;
+  animation: animLand 2516ms linear infinite;
+}
+
+#bigscore {
+  position: absolute;
+  top: 20px;
+  left: 490px;
+  z-index: 100;
+}
+
+#bigscore img {
+  display: inline-block;
+  padding: 1px;
+}
+
+#splash {
+  z-index: 100;
+  position: absolute;
+  opacity: 0;
+  top: 120px;
+  left: 403px;
+  width: 188px;
+  height: 170px;
+  background-image: url('../assets/splash.png');
+  background-repeat: no-repeat;
+}
+
+#scoreboard {
+  z-index: 100;
+  position: absolute;
+  display: none;
+  opacity: 0;
+  top: 64px;
+  left: 380px;
+  width: 236px;
+  height: 280px;
+  background-image: url('../assets/scoreboard.png');
+  background-repeat: no-repeat;
+}
+
+#medal {
+  position: absolute;
+  opacity: 0;
+  top: 114px;
+  left: 32px;
+  width: 44px;
+  height: 44px;
+  background-repeat: none no-repeat;
+}
+
+#medal.none {
+  background-image: url('../assets/medal_none.png');
+}
+
+#medal.bronze {
+  background-image: url('../assets/medal_bronze.png');
+}
+
+#medal.silver {
+  background-image: url('../assets/medal_silver.png');
+}
+
+#medal.gold {
+  background-image: url('../assets/medal_gold.png');
+}
+
+#medal.platinum {
+  background-image: url('../assets/medal_platinum.png');
+}
+
+#currentscore {
+  position: absolute;
+  top: 105px;
+  left: 107px;
+  width: 104px;
+  height: 14px;
+  text-align: right;
+}
+
+#currentscore img {
+  padding-left: 2px;
+}
+
+#highscore {
+  position: absolute;
+  top: 147px;
+  left: 107px;
+  width: 104px;
+  height: 14px;
+  text-align: right;
+}
+
+#highscore img {
+  padding-left: 2px;
+}
+
+#retry {
+  position: absolute;
+  opacity: 0;
+  top: 195px;
+  left: 61px;
+  height: 115px;
+  width: 70px;
+  cursor: pointer;
+}
+
+.boundingbox {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 1px solid red;
+}
+
+#player {
+  left: 60px;
+  top: 200px;
+}
+
+.bird {
+  z-index: 20;
+  position: absolute;
+  width: 50px;
+  height: 34px;
+  background-image: url('../assets/bird.png');
+}
+
+.pipe {
+  position: absolute;
+  left: -100px;
+  width: 52px;
+  height: 100%;
+  z-index: 10;
+  margin-top: -5px;
+
+  -webkit-animation: animPipe 8200ms linear;
+  -moz-animation: animPipe 8200ms linear;
+  -ms-animation: animPipe 8200ms linear;
+  -o-animation: animPipe 8200ms linear;
+  animation: animPipe 8200ms linear;
+}
+
+.pipe_upper {
+  position: absolute;
+  top: -0;
+  width: 52px;
+  background-image: url('../assets/pipe.png');
+  background-repeat: repeat-y;
+  background-position: center;
+  z-index: 2;
+}
+
+.pipe_upper:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 52px;
+  height: 26px;
+  background-image: url('../assets/pipe-down.png');
+  background-repeat:no-repeat;
+  background-position: center;
+}
+
+.pipe_lower {
+  position: absolute;
+  bottom: 0;
+  width: 52px;
+  background-image: url('../assets/pipe.png');
+  background-repeat: repeat-y;
+  background-position: center;
+  z-index: 6;
+}
+
+.pipe_lower:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 52px;
+  height: 26px;
+  background-image: url('../assets/pipe-up.png');
+  background-position: center;
+  background-repeat:no-repeat;
+}
